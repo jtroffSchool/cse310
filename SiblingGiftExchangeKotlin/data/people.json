@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Landon",
+        "familyId": "FamilyA",
+        "isKid": false
+    },
+    {
+        "name": "Harper",
+        "familyId": "FamilyA",
+        "isKid": false
+    },
+    {
+        "name": "Skyler",
+        "familyId": "FamilyA",
+        "isKid": true
+    },
+    {
+        "name": "Maya",
+        "familyId": "FamilyA",
+        "isKid": true
+    },
+    {
+        "name": "Declan",
+        "familyId": "FamilyA",
+        "isKid": true
+    },
+    {
+        "name": "Julian",
+        "familyId": "FamilyB",
+        "isKid": false
+    },
+    {
+        "name": "Ivy",
+        "familyId": "FamilyB",
+        "isKid": false
+    },
+    {
+        "name": "Theo",
+        "familyId": "FamilyB",
+        "isKid": true
+    },
+    {
+        "name": "Aurora",
+        "familyId": "FamilyB",
+        "isKid": true
+    },
+    {
+        "name": "Miles",
+        "familyId": "FamilyB",
+        "isKid": true
+    },
+    {
+        "name": "Evelyn",
+        "familyId": "FamilyC",
+        "isKid": false
+    },
+    {
+        "name": "Cole",
+        "familyId": "FamilyC",
+        "isKid": false
+    },
+    {
+        "name": "Aria",
+        "familyId": "FamilyC",
+        "isKid": true
+    },
+    {
+        "name": "Rowan",
+        "familyId": "FamilyD",
+        "isKid": false
+    },
+    {
+        "name": "Kieran",
+        "familyId": "FamilyE",
+        "isKid": false
+    },
+    {
+        "name": "Sophie",
+        "familyId": "FamilyE",
+        "isKid": false
+    },
+    {
+        "name": "Ezra",
+        "familyId": "FamilyF",
+        "isKid": false
+    },
+    {
+        "name": "Amelia",
+        "familyId": "FamilyF",
+        "isKid": false
+    },
+    {
+        "name": "Finn",
+        "familyId": "FamilyF",
+        "isKid": true
+    },
+    {
+        "name": "Lila",
+        "familyId": "FamilyF",
+        "isKid": true
+    },
+    {
+        "name": "Riley",
+        "familyId": "FamilyF",
+        "isKid": true
+    },
+    {
+        "name": "Jasper",
+        "familyId": "FamilyF",
+        "isKid": true
+    },
+    {
+        "name": "Randy",
+        "familyId": "FamilyD",
+        "isKid": false
+    },
+    {
+        "name": "Fred",
+        "familyId": "FamilyD",
+        "isKid": true
+    }
+]
