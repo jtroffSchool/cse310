@@ -6,16 +6,14 @@ With my extensive board and card game collection I am often asked for recommenda
 
 # Development Environment
 
-Vite
-React
-Tailwind
-ESLint
+- Vite
+- React
+- Tailwind
+- ESLint
 
 I used Typescript as the main language for this program.
 
 # Useful Websites
-
-{Make a list of websites that you found helpful in this project}
 
 - [TypeScript Documention](https://www.typescriptlang.org/)
 - [What is Typescript](https://www.contentful.com/blog/what-is-typescript-and-why-should-you-use-it/)
