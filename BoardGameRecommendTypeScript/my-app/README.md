@@ -1,3 +1,32 @@
+# Overview
+
+With my extensive board and card game collection I am often asked for recommendations. I wanted to creat this software to make it easier to find recommendations that match various people's preferences. I decided for this school module to learn more about the Typescript language. I also wanted to have more of a UI interface since my last project was just a console application.
+
+[Software Demo Video](https://youtu.be/iju-knFiSTA)
+
+# Development Environment
+
+Vite
+React
+Tailwind
+ESLint
+
+I used Typescript as the main language for this program.
+
+# Useful Websites
+
+{Make a list of websites that you found helpful in this project}
+
+- [TypeScript Documention](https://www.typescriptlang.org/)
+- [What is Typescript](https://www.contentful.com/blog/what-is-typescript-and-why-should-you-use-it/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+# Future Work
+
+- Connect to a database so that the games aren't just stored in a local file
+- Expand the list of game recommendations
+- Add a Random button that will randomize the answers to all the questions at one time
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -17,9 +46,9 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
 
@@ -34,40 +63,40 @@ export default defineConfig([
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
       // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
+      reactX.configs["recommended-typescript"],
       // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
