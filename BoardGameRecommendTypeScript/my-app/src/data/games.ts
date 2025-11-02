@@ -6,6 +6,7 @@ export interface Game {
   genre: string;
   difficulty: "Easy" | "Medium" | "Hard";
   description: string;
+  bggId?: number; // optional BGG ID
 }
 
 export const games: Game[] = [
@@ -18,6 +19,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Build settlements, trade resources, and expand your territory.",
+    bggId: 13,
   },
   {
     id: 2,
@@ -28,6 +30,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "Give one-word clues to help your team find secret agents on the board.",
+    bggId: 178900,
   },
   {
     id: 3,
@@ -38,6 +41,7 @@ export const games: Game[] = [
     difficulty: "Hard",
     description:
       "Compete to develop Mars by managing resources and building projects.",
+    bggId: 167791,
   },
   {
     id: 4,
@@ -48,6 +52,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Attract birds to your wildlife preserves and build powerful combos.",
+    bggId: 266192,
   },
   {
     id: 5,
@@ -58,6 +63,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "Collect train cards to claim railway routes across the country.",
+    bggId: 9209,
   },
   {
     id: 6,
@@ -68,6 +74,7 @@ export const games: Game[] = [
     difficulty: "Hard",
     description:
       "Team up for tactical combat in a world of quests and branching storylines.",
+    bggId: 174430,
   },
   {
     id: 7,
@@ -78,6 +85,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A trick-taking pirate card game where players blindly bid how many tricks they'll win. Bonus cards like pirates, mermaids, and the Skull King itself add chaos and strategy.",
+    bggId: 150145,
   },
   {
     id: 8,
@@ -88,6 +96,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Designers compete to decorate Portugal's Summer Pavilion over six rounds, drafting & placing tiles, using wild colors, and balancing bonuses while avoiding waste.",
+    bggId: 287954,
   },
   {
     id: 9,
@@ -98,16 +107,18 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A sequencing card game where players build stacks in numerical order to empty their stockpile. Simple rules make it great for family game nights.",
+    bggId: 1269,
   },
   {
     id: 10,
     name: "Reign of Dragoness",
-    players: "3–8",
-    playTime: "20–40 min",
+    players: "3-8",
+    playTime: "20-40 min",
     genre: "Ladder Climbing / Card",
     difficulty: "Medium",
     description:
       "A strategic card game where players use dragons to form sets and runs, aiming to outplay opponents in a battle of wits and timing.",
+    bggId: 366166,
   },
   {
     id: 11,
@@ -118,6 +129,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A fast-paced abstract game where players use bee-shaped pieces to capture flowers, control the board, and outmaneuver opponents.",
+    bggId: 299592,
   },
   {
     id: 12,
@@ -128,16 +140,18 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A simple race-to-the-finish board game where players move along a colorful path by drawing cards, perfect for young children and family play.",
+    bggId: 5048,
   },
   {
     id: 13,
-    name: "Cat in the Box",
+    name: "Cat in the Box: Deluxe Edition",
     players: "2-5",
     playTime: "15-30 min",
     genre: "Party / Deduction",
     difficulty: "Medium",
     description:
       "A lighthearted party game where players guess which cards are cats and which are not, balancing memory, deduction, and a bit of luck.",
+    bggId: 345972,
   },
   {
     id: 14,
@@ -148,16 +162,18 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A classic race-to-the-finish board game where players spin the spinner to move along the board, climbing ladders and sliding down chutes.",
+    bggId: 5432,
   },
   {
     id: 15,
     name: "Communist Cats",
-    players: "2–6",
-    playTime: "5–10 min",
+    players: "2-6",
+    playTime: "5-10 min",
     genre: "Party / Bluffing",
     difficulty: "Easy",
     description:
       "A fast-paced party card game where players use bluffing and strategy to gain influence, defeat opponents, or capture the elusive capitalist mouse.",
+    bggId: 258512,
   },
   {
     id: 16,
@@ -168,6 +184,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A fast-paced card game where players collect and stack assets while trying to steal from opponents. Strategic risk-taking and timing are key to winning.",
+    bggId: 121193,
   },
   {
     id: 17,
@@ -178,6 +195,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Players use cards to build their kingdoms while attempting to sabotage opponents' kingdoms. Strategic card play and timing are essential to dominate the board.",
+    bggId: 281132,
   },
   {
     id: 18,
@@ -188,6 +206,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A team-based word-guessing game where one team gives clues to their teammate while the opposing team tries to intercept. Communication, timing, and clever hints are key.",
+    bggId: 215371,
   },
   {
     id: 19,
@@ -198,6 +217,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A strategic card game where players use curses and counter-curses to disrupt opponents while advancing their own position. Timing and hand management are key to victory.",
+    bggId: 5298,
   },
   {
     id: 20,
@@ -208,6 +228,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Players work together to defend the kingdom from invading monsters. Each hero has unique abilities, and teamwork is essential to overcome challenging scenarios.",
+    bggId: 65532,
   },
   {
     id: 21,
@@ -218,6 +239,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Players take on the role of Disney villains, each with unique objectives. Use your special abilities, manipulate the board, and thwart opponents to achieve your villainous goals.",
+    bggId: 256382,
   },
   {
     id: 22,
@@ -228,6 +250,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A fast-paced card game where players evolve quirky creatures to survive and score points. Fun, unpredictable, and full of humorous interactions.",
+    bggId: 324413,
   },
   {
     id: 23,
@@ -238,6 +261,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A fast-paced, humorous card game where players draw cards until someone explodes. Use strategy and sabotage to survive while making others go boom!",
+    bggId: 172225,
   },
   {
     id: 24,
@@ -248,6 +272,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "Draft adorable sushi cards to make the best meal combination. Quick to learn and full of clever choices each round.",
+    bggId: 133473,
   },
   {
     id: 25,
@@ -258,6 +283,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A game of bluffing, deduction, and luck. Deliver your love letter to the princess while intercepting others' letters before they reach her.",
+    bggId: 129622,
   },
   {
     id: 26,
@@ -268,6 +294,7 @@ export const games: Game[] = [
     difficulty: "Hard",
     description:
       "A cooperative trick-taking game where players complete space missions through communication, teamwork, and precise play.",
+    bggId: 284083,
   },
   {
     id: 27,
@@ -278,6 +305,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A quick card drafting game where every card can be a vegetable or a scoring condition. Endless combinations make each game unique.",
+    bggId: 274960,
   },
   {
     id: 28,
@@ -288,6 +316,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A cooperative word game where players give one-word clues to help a teammate guess a secret word — but duplicate clues are discarded!",
+    bggId: 254640,
   },
   {
     id: 29,
@@ -298,6 +327,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "Teams compete to align their minds by guessing where a hidden target lies on a spectrum (e.g., hot ↔ cold, good ↔ evil).",
+    bggId: 262543,
   },
   {
     id: 30,
@@ -308,6 +338,7 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "Teams give coded clues to transmit secret words without letting the opposing team intercept them. A game of communication and clever phrasing.",
+    bggId: 225694,
   },
   {
     id: 31,
@@ -318,6 +349,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "Like 'Telephone' but with drawings! Players draw, guess, and laugh as the original word transforms hilariously through misinterpretation.",
+    bggId: 46213,
   },
   {
     id: 32,
@@ -328,6 +360,7 @@ export const games: Game[] = [
     difficulty: "Easy",
     description:
       "A hilarious guessing game played over three rounds — describe, use one word, then mime to get your team to guess famous people and concepts.",
+    bggId: 156546,
   },
   {
     id: 33,
@@ -338,5 +371,6 @@ export const games: Game[] = [
     difficulty: "Medium",
     description:
       "A classic fantasy board game where heroes race through perilous lands, battle monsters, collect treasures, and seek the powerful Crown of Command.",
+    bggId: 27627,
   },
 ];
