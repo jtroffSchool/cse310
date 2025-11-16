@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Daily Score Submission</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      h1,
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ccc;
+      }
+
+      /* Highlight first 3 leaderboard ranks */
+      .gold {
+        background-color: #ffd70033; /* light gold tint */
+        font-weight: bold;
+      }
+      .silver {
+        background-color: #c0c0c033; /* light silver tint */
+        font-weight: bold;
+      }
+      .bronze {
+        background-color: #cd7f3233; /* light bronze tint */
+        font-weight: bold;
+      }
+
+      #myStats {
+        border: 1px solid #ccc;
+        padding: 10px 12px;
+        border-radius: 4px;
+        background: #f9f9f9;
+        margin-bottom: 20px;
+      }
+      #myStats p {
+        margin: 4px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Submit Daily Score</h1>
+
+    <form id="scoreForm">
+      <label for="userId">Player:</label>
+      <select id="userId"></select>
+      <br /><br />
+
+      <label for="scoreDate">Date:</label>
+      <input type="date" id="scoreDate" />
+      <br /><br />
+
+      <label for="timeSeconds">Time (seconds):</label>
+      <input type="number" id="timeSeconds" step="0.1" required />
+      <br /><br />
+
+      <label for="mistakes">Mistakes:</label>
+      <input type="number" id="mistakes" required />
+      <br /><br />
+
+      <label for="hintsUsed">Hints Used:</label>
+      <input type="number" id="hintsUsed" required />
+      <br /><br />
+
+      <label for="difficulty">Difficulty (1-5):</label>
+      <input type="number" id="difficulty" min="1" max="5" required />
+      <br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Submission Result</h2>
+    <pre id="result"></pre>
+
+    <hr />
+
+    <h2>My Stats</h2>
+    <div id="myStats">
+      <p>Select a player to see their stats.</p>
+    </div>
+
+    <h2>Leaderboard (Current Month)</h2>
+    <button id="refreshLeaderboard">Refresh Leaderboard</button>
+
+    <table id="leaderboardTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Current Month Total</th>
+          <th>Last Month Total</th>
+          <th>Average Time (s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows added by JS -->
+      </tbody>
+    </table>
+
+    <script>
+      const userSelect = document.getElementById("userId");
+      const form = document.getElementById("scoreForm");
+      const resultEl = document.getElementById("result");
+      const leaderboardBody = document.querySelector("#leaderboardTable tbody");
+      const refreshBtn = document.getElementById("refreshLeaderboard");
+      const myStatsDiv = document.getElementById("myStats");
+
+      // Cache leaderboard data so we can show stats for the selected user
+      let leaderboardCache = [];
+
+      /* --------------------------
+           Load Users for Dropdown
+        --------------------------- */
+      async function populateUsers() {
+        try {
+          const response = await fetch("/users");
+          const users = await response.json();
+
+          userSelect.innerHTML = ""; // Clear any existing options
+
+          users.forEach((user) => {
+            const option = document.createElement("option");
+            option.value = user.userId;
+            option.textContent = user.username;
+            userSelect.appendChild(option);
+          });
+
+          if (users.length === 0) {
+            resultEl.textContent = "No users found in Firestore.";
+          }
+        } catch (err) {
+          console.error("Failed to fetch users:", err);
+          resultEl.textContent = "Error loading users.";
+        }
+      }
+
+      /* --------------------------
+           Load Leaderboard Data
+        --------------------------- */
+      async function loadLeaderboard() {
+        try {
+          const response = await fetch("/leaderboard-data");
+          const rows = await response.json();
+
+          leaderboardCache = rows; // store for My Stats use
+          leaderboardBody.innerHTML = ""; // Clear
+
+          rows.forEach((entry) => {
+            const tr = document.createElement("tr");
+
+            // Top 3 highlights
+            if (entry.rank === 1) tr.classList.add("gold");
+            else if (entry.rank === 2) tr.classList.add("silver");
+            else if (entry.rank === 3) tr.classList.add("bronze");
+
+            tr.innerHTML = `
+                        <td>${entry.rank}</td>
+                        <td>${entry.username}</td>
+                        <td>${entry.currentMonthTotal ?? 0}</td>
+                        <td>${entry.lastMonthTotal ?? 0}</td>
+                        <td>${(entry.averageTime ?? 0).toFixed(2)}</td>
+                    `;
+
+            leaderboardBody.appendChild(tr);
+          });
+
+          if (rows.length === 0) {
+            leaderboardBody.innerHTML =
+              "<tr><td colspan='5'>No data yet.</td></tr>";
+          }
+
+          // After loading leaderboard, refresh My Stats for the current selection
+          updateMyStats();
+        } catch (err) {
+          console.error("Failed to fetch leaderboard:", err);
+        }
+      }
+
+      /* --------------------------
+           Update "My Stats" box
+        --------------------------- */
+      function updateMyStats() {
+        const selectedUserId = userSelect.value;
+        if (!selectedUserId || leaderboardCache.length === 0) {
+          myStatsDiv.innerHTML = "<p>No stats yet.</p>";
+          return;
+        }
+
+        const entry = leaderboardCache.find((e) => e.userId === selectedUserId);
+
+        if (!entry) {
+          myStatsDiv.innerHTML = "<p>No stats yet for this user.</p>";
+          return;
+        }
+
+        myStatsDiv.innerHTML = `
+                <p><strong>Player:</strong> ${entry.username}</p>
+                <p><strong>Rank:</strong> #${entry.rank}</p>
+                <p><strong>Current Month Total:</strong> ${
+                  entry.currentMonthTotal ?? 0
+                }</p>
+                <p><strong>Last Month Total:</strong> ${
+                  entry.lastMonthTotal ?? 0
+                }</p>
+                <p><strong>Average Time:</strong> ${(
+                  entry.averageTime ?? 0
+                ).toFixed(2)} s</p>
+            `;
+      }
+
+      /* --------------------------
+           Submit Score Handler
+        --------------------------- */
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const payload = {
+          userId: userSelect.value,
+          timeSeconds: parseFloat(document.getElementById("timeSeconds").value),
+          mistakes: parseInt(document.getElementById("mistakes").value),
+          hintsUsed: parseInt(document.getElementById("hintsUsed").value),
+          difficulty: parseInt(document.getElementById("difficulty").value),
+          submittedBy: "WebUser",
+          date: document.getElementById("scoreDate").value || null, // 👈 NEW
+        };
+
+        try {
+          const response = await fetch("/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await response.json();
+          resultEl.textContent = JSON.stringify(data, null, 2);
+
+          // Refresh leaderboard & stats after submission
+          await loadLeaderboard();
+        } catch (err) {
+          console.error("Submit error:", err);
+          resultEl.textContent = "Error submitting score.";
+        }
+      });
+
+      /* --------------------------
+           Initial Page Load
+        --------------------------- */
+      (async function init() {
+        await populateUsers();
+        await loadLeaderboard();
+      })();
+
+      // Refresh leaderboard button
+      refreshBtn.addEventListener("click", loadLeaderboard);
+
+      // When the selected player changes, update My Stats
+      userSelect.addEventListener("change", updateMyStats);
+    </script>
+  </body>
+</html>
